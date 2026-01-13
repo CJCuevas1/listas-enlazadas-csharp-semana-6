@@ -1,31 +1,20 @@
-namespace TareaListas
-{
-    public class Nodo
-    {
-        public int Dato { get; set; }
-        public Nodo Siguiente { get; set; }
-
-        public Nodo(int dato)
-        {
-            Dato = dato;
-            Siguiente = null;
-        }
-    }
-}
-//ListaEnlazada.cs
-
 using System;
 
 namespace TareaListas
 {
+    // 1. ESTRUCTURA DEL NODO
+    public class Nodo
+    {
+        public int Dato { get; set; }
+        public Nodo Siguiente { get; set; }
+        public Nodo(int dato) { Dato = dato; Siguiente = null; }
+    }
+
+    // 2. CLASE LISTA ENLAZADA (CON EJERCICIOS 1 Y 3)
     public class ListaEnlazada
     {
         private Nodo primero;
-
-        public ListaEnlazada()
-        {
-            primero = null;
-        }
+        public ListaEnlazada() { primero = null; }
 
         public void Insertar(int dato)
         {
@@ -39,16 +28,12 @@ namespace TareaListas
             }
         }
 
-        // EJERCICIO 1: Contar elementos
+        // EJERCICIO 1: Calcular número de elementos
         public int ContarElementos()
         {
             int contador = 0;
             Nodo actual = primero;
-            while (actual != null)
-            {
-                contador++;
-                actual = actual.Siguiente;
-            }
+            while (actual != null) { contador++; actual = actual.Siguiente; }
             return contador;
         }
 
@@ -62,67 +47,71 @@ namespace TareaListas
                 if (actual.Dato == valor) { contador++; }
                 actual = actual.Siguiente;
             }
-
             if (contador > 0)
-                Console.WriteLine($"\nEl dato {valor} se encontro {contador} veces en la lista.");
+                Console.WriteLine($"\nRESULTADO: El dato {valor} se encontro {contador} veces.");
             else
-                Console.WriteLine($"\nEl dato {valor} no fue encontrado en la lista.");
+                Console.WriteLine($"\nRESULTADO: El dato {valor} no fue encontrado.");
         }
 
         public void MostrarLista()
         {
             Nodo actual = primero;
-            Console.Write("Lista: ");
-            while (actual != null)
-            {
-                Console.Write($"[{actual.Dato}] -> ");
-                actual = actual.Siguiente;
-            }
+            Console.Write("Contenido de la lista: ");
+            while (actual != null) { Console.Write($"[{actual.Dato}] -> "); actual = actual.Siguiente; }
             Console.WriteLine("NULL");
         }
     }
-}
-//Program.cs
-using System;
 
-namespace TareaListas
-{
+    // 3. PROGRAMA PRINCIPAL
     class Program
     {
         static void Main(string[] args)
         {
-            // DATOS DEL ESTUDIANTE
-            Console.WriteLine("ESTUDIANTE: JEFFERSON");
-            Console.WriteLine("TAREA: LISTAS ENLAZADAS - SEMANA 6");
-            Console.WriteLine("EJERCICIOS ELEGIDOS: 1 y 3\n");
+            Console.WriteLine("===========================================");
+            Console.WriteLine("TAREAS DE LISTAS ENLAZADAS - JEFFERSON");
+            Console.WriteLine("EJERCICIOS SELECCIONADOS: 1 y 3");
+            Console.WriteLine("===========================================\n");
 
             ListaEnlazada miLista = new ListaEnlazada();
 
-            // Insertando algunos datos de prueba
+            // Insertamos datos de prueba
             miLista.Insertar(10);
-            miLista.Insertar(20);
+            miLista.Insertar(25);
             miLista.Insertar(10);
-            miLista.Insertar(30);
+            miLista.Insertar(40);
+            miLista.Insertar(10);
 
             miLista.MostrarLista();
 
-            // PRUEBA EJERCICIO 1
-            int total = miLista.ContarElementos();
-            Console.WriteLine($"\n1. TOTAL DE ELEMENTOS: {total}");
+            // Ejecución Ejercicio 1
+            Console.WriteLine($"\nEJERCICIO 1: Total de elementos en la lista: {miLista.ContarElementos()}");
 
-            // PRUEBA EJERCICIO 3
-            Console.Write("\nIngrese un numero para buscar en la lista: ");
-            int buscar = int.Parse(Console.ReadLine());
-            miLista.BuscarDato(buscar);
+            // Ejecución Ejercicio 3
+            Console.WriteLine("\nEJERCICIO 3: Busqueda del numero 10...");
+            miLista.BuscarDato(10);
 
-            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.WriteLine("\nPresione cualquier tecla para finalizar...");
             Console.ReadKey();
         }
     }
 }
-  
+
+
+
+     
+       
+        
+           
+               
+    
+
+           
+           
+
+           
 
       
+
 
 
 
